@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Content</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>🔑 Unlock Exclusive Content</h2>
+        <p>Complete all steps to unlock the content.</p>
+
+        <div class="task" onclick="completeTask(this, 'youtube')">
+            <span>📺 <a href="https://youtu.be/_SGCFW9Xr1M?si=m3FFKFlDmUZBidR3" target="_blank">Subscribe & Like</a></span>
+            <span class="status">❌</span>
+        </div>
+
+        <div class="task" onclick="completeTask(this, 'instagram')">
+            <span>📷 <a href="https://www.instagram.com/md_azhar0405?igsh=OGN4czI1enVhZGw5" target="_blank">Follow</a></span>
+            <span class="status">❌</span>
+        </div>
+
+        <button id="unlockBtn" class="locked" disabled>🔒 Unlock Link</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
