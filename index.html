@@ -1,29 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlock Content</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h2>🔑 Unlock Exclusive Content</h2>
-        <p>Complete all steps to unlock the content.</p>
+let tasksCompleted = { youtube: false, instagram: false };
 
-        <div class="task" onclick="completeTask(this, 'youtube')">
-            <span>📺 <a href="https://youtu.be/_SGCFW9Xr1M?si=m3FFKFlDmUZBidR3" target="_blank">Subscribe & Like</a></span>
-            <span class="status">❌</span>
-        </div>
+function completeTask(element, task) {
+    if (task === "youtube") {
+        let youtubeLink = "https://www.youtube.com/channel/https://youtube.com/@dynamicpixelss?si=BGsbcxjNGkF13XEg?sub_confirmation=1";
+        let win = window.open(youtubeLink, "_blank");
+        
+        // 5 seconds ka delay dekar check karenge ki user wapas aaya ya nahi
+        setTimeout(() => {
+            let confirmSubscribe = confirm("Did you subscribe to the channel?");
+            if (confirmSubscribe) {
+                tasksCompleted.youtube = true;
+                element.style.background = "#28a745";
+                element.querySelector(".status").textContent = "✅";
+                checkUnlock();
+            } else {
+                alert("You need to subscribe to unlock the content.");
+            }
+        }, 5000);
+    } else if (task === "instagram") {
+        let instaLink = "https://www.instagram.com/md_azhar0405?igsh=OGN4czI1enVhZGw5";
+        window.open(instaLink, "_blank");
+        tasksCompleted.instagram = true;
+        element.style.background = "#28a745";
+        element.querySelector(".status").textContent = "✅";
+        checkUnlock();
+    }
+}
 
-        <div class="task" onclick="completeTask(this, 'instagram')">
-            <span>📷 <a href="https://www.instagram.com/md_azhar0405?igsh=OGN4czI1enVhZGw5" target="_blank">Follow</a></span>
-            <span class="status">❌</span>
-        </div>
-
-        <button id="unlockBtn" class="locked" disabled>🔒 Unlock Link</button>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+function checkUnlock() {
+    if (tasksCompleted.youtube && tasksCompleted.instagram) {
+        let unlockBtn = document.getElementById("unlockBtn");
+        unlockBtn.classList.remove("locked");
+        unlockBtn.classList.add("unlocked");
+        unlockBtn.disabled = false;
+        unlockBtn.textContent = "✅ Click to Unlock!";
+        unlockBtn.onclick = function () {
+            window.location.href = "YOUR_SECRET_LINK";
+        };
+    }
+}
